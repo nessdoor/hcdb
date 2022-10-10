@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build-meta"
+
+[project]
+name = "hcdb"
+version = "0.1"
+dependencies = ["pure-cdb"]
+license = { file = "COPYING" }
+
+[project.scripts]
+hcdb = "hcdb.main:main"
