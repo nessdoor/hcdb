@@ -21,13 +21,13 @@
         in
           pkgs.mkShell {
             nativeBuildInputs = with pkgs; [
-              (python3.withPackages (pps: with pps; [
+              (python310.withPackages (pps: with pps; [
                 pure-cdb
               ]))
 
               # Development support
-              python3Packages.python-lsp-server
-              python3Packages.pyls-isort
+              python310Packages.python-lsp-server
+              python310Packages.pyls-isort
 
               # This is another CDB manipulator, using the original djb interface
               tinycdb
