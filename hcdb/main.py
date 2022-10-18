@@ -12,6 +12,7 @@ cmdparser = ArgumentParser(prog="hcdb",
 cmdparser.add_argument('--file', '-f',
                        action='store',
                        type=Path,
+                       required=True,
                        help="operate on FILE (default: stdin)")
 
 # Make/query/update operations will be implemented as sub-commands
