@@ -31,7 +31,9 @@
 
               # This is another CDB manipulator, using the original djb interface
               tinycdb
-            ];
+            ]
+            # Add our artifact too
+            ++ [ self.packages.x86_64-linux.default ];
           };
     };
 }
