@@ -10,14 +10,20 @@
     
     # This program should be portable enough to be able to run an all main platforms
     flake-utils.lib.eachDefaultSystem (system:
-      rec {
-        packages.hcdb = nixpkgs.legacyPackages.${system}.callPackage ./package.nix {};
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in rec {
+        packages.hcdb = pkgs.callPackage ./package.nix {
+          buildPythonApplication = pkgs.python310.pkgs.buildPythonApplication;
+          pure-cdb = pkgs.python310Packages.pure-cdb;
+        };
         packages.default = self.packages.${system}.hcdb;
       }
     ) //
     {
       devShells.x86_64-linux.default =
-        let pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        let
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
         in
           pkgs.mkShell {
             nativeBuildInputs = with pkgs; [

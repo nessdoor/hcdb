@@ -1,12 +1,12 @@
-{ lib, python310 }:
+{ lib, buildPythonApplication, pure-cdb }:
 
-python310.pkgs.buildPythonApplication {
+buildPythonApplication {
   pname = "hcdb";
   version = "0.1";
 
   src = ./.;
 
-  propagatedBuildInputs = with python310.pkgs; [ pure-cdb ];
+  propagatedBuildInputs = [ pure-cdb ];
 
   doCheck = false;
 
